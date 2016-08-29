@@ -1,0 +1,24 @@
+{
+  "name": "xsky-components",
+  "version": "0.0.1",
+  "description": "React components",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"no test specified\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryerh/xsky-components.git"
+  },
+  "keywords": [
+    "react",
+    "components",
+    "xsky-fe",
+  ],
+  "author": "xsky-fe",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ryerh/xsky-components/issues"
+  },
+  "homepage": "https://github.com/ryerh/xsky-components#readme"
+}
