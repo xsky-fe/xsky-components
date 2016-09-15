@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/ryerh/xsky-components/issues"
   },
-  "homepage": "https://github.com/ryerh/xsky-components#readme"
+  "homepage": "https://github.com/ryerh/xsky-components#readme",
+  "dependencies": {
+    "bootstrap": "^4.0.0-alpha.4"
+  }
 }
