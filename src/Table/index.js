@@ -40,6 +40,10 @@ class Table extends React.Component {
     }
   }
 
+  get selected() {
+    return this.state.toggle.get('items')
+  }
+
   render() {
     const {
       props: {
@@ -67,8 +71,7 @@ class Table extends React.Component {
                 <th>
                   <input
                     type="checkbox"
-                    value=""
-                    checked={toggle.get('all')}
+                    checked={Boolean(toggle.get('all'))}
                     onChange={this.handleToggleAllClick}
                   />
                 </th>
@@ -92,9 +95,8 @@ class Table extends React.Component {
                   <td>
                     <input
                       type="checkbox"
-                      value="" // => bug @https://github.com/facebook/react/issues/6779
-                      checked={toggle.getIn(['items', row.id])}
-                      onClick={partial(this.handleToggleItemClick, row)}
+                      checked={Boolean(toggle.getIn(['items', row.id]))}
+                      onChange={partial(this.handleToggleItemClick, row)}
                     />
                   </td>
                 )}
