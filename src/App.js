@@ -7,11 +7,6 @@ import Table from './Table'
 
 class App extends Component {
 
-  componentDidMount() {
-    window.refs = this.refs;
-    console.log(this.refs);
-  }
-
   render() {
     return (
       <Row>
@@ -29,7 +24,9 @@ class App extends Component {
             condensed
             striped
             hover
-            onSelect={() => {}}
+            onSelect={() => console.log(this.refs.table.selected.toJSON())}
+            onEdit={() => {}}
+            onDelete={() => {}}
             data={[
               { id: 1, name: 1, age: 1 },
               { id: 2, name: 2, age: 2 },
