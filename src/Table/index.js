@@ -29,14 +29,14 @@ class Table extends React.Component {
             items: itemState,
           })
         ),
-      })
+      }, this.props.onSelect)
     }
 
     this.handleToggleItemClick = (item) => {
       const { toggle } = this.state
       this.setState({
         toggle: toggle.updateIn(['items', item.id], v => !v),
-      })
+      }, this.props.onSelect)
     }
   }
 
