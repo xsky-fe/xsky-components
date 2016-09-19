@@ -12,36 +12,32 @@ class Table extends React.Component {
     super(...args)
 
     this.state = {
-      toggle: new Map({
-        all: false,
-        items: new Map(),
-      }),
+      all: false,
+      items: new Map(),
+    }
+
+    this.handleSelect = () => {
+      this.props.onSelect(this.selected)
     }
 
     this.handleToggleAllClick = () => {
-      const { toggle } = this.state
-      const nextState = !toggle.get('all')
-      const itemState = new Map(this.props.data.map(v => [v.id, nextState]))
+      const nextState = !this.state.all;
       this.setState({
-        toggle: toggle.update(() =>
-          new Map({
-            all: nextState,
-            items: itemState,
-          })
-        ),
-      }, this.props.onSelect)
+        all: nextState,
+        items: new Map(this.props.data.map(v => [v.id, nextState])),
+      }, this.handleSelect)
     }
 
     this.handleToggleItemClick = (item) => {
-      const { toggle } = this.state
+      const { items } = this.state
       this.setState({
-        toggle: toggle.updateIn(['items', item.id], v => !v),
-      }, this.props.onSelect)
+        items: items.update(item.id, v => !v),
+      }, this.handleSelect)
     }
   }
 
   get selected() {
-    return this.state.toggle.get('items')
+    return this.state.items
   }
 
   render() {
@@ -51,7 +47,7 @@ class Table extends React.Component {
         bordered, condensed, hover, responsive, striped,
         renderHeader, renderBody, onSelect, onEdit, onDelete,
       },
-      state: { toggle },
+      state: { all, items },
     } = this
 
     const tableComponent = (
@@ -71,7 +67,7 @@ class Table extends React.Component {
                 <th>
                   <input
                     type="checkbox"
-                    checked={Boolean(toggle.get('all'))}
+                    checked={Boolean(all)}
                     onChange={this.handleToggleAllClick}
                   />
                 </th>
@@ -95,7 +91,7 @@ class Table extends React.Component {
                   <td>
                     <input
                       type="checkbox"
-                      checked={Boolean(toggle.getIn(['items', row.id]))}
+                      checked={Boolean(items.get(row.id))}
                       onChange={partial(this.handleToggleItemClick, row)}
                     />
                   </td>

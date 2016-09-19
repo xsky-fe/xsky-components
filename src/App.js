@@ -25,8 +25,6 @@ class App extends Component {
             striped
             hover
             onSelect={() => console.log(this.refs.table.selected.toJSON())}
-            onEdit={() => {}}
-            onDelete={() => {}}
             data={[
               { id: 1, name: 1, age: 1 },
               { id: 2, name: 2, age: 2 },

@@ -71,7 +71,7 @@ TextFactory.defaultProps = {
 }
 
 typographyTags.forEach(tag => {
-  TextFactory[tag] = props => TextFactory({ tag, ...props })
+  TextFactory[tag] = props => <TextFactory tag={tag} {...props} />
 })
 
 export default TextFactory
