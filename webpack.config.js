@@ -62,4 +62,16 @@ module.exports = {
       'autoprefixer',
     ].map(require)
   },
+
+  stats: {
+    colors: true,
+    reasons: true,
+    hash: false,
+    version: false,
+    timings: true,
+    chunks: false,
+    chunkModules: false,
+    cached: false,
+    cachedAssets: false,
+  },
 } // module.exports
